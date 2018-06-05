@@ -1,5 +1,6 @@
 package com.lizixc.mikuweather;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
@@ -8,11 +9,14 @@ import org.litepal.LitePal;
 public class MyApplication extends Application {
     private static Context context;
 
-    public MyApplication() {
-        this.context = getApplicationContext();
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = getApplicationContext();
         LitePal.initialize(context);
     }
-    public static final Context getContext(){
+
+    public static Context getContext(){
         return context;
     }
 }
