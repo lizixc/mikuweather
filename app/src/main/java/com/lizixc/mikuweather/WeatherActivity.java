@@ -1,6 +1,7 @@
 package com.lizixc.mikuweather;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.lizixc.mikuweather.gson.Forecast;
 import com.lizixc.mikuweather.gson.Weather;
+import com.lizixc.mikuweather.service.AutoUpdateService;
 import com.lizixc.mikuweather.util.HttpUtil;
 import com.lizixc.mikuweather.util.Utility;
 
@@ -209,5 +211,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
